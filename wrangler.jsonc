@@ -13,7 +13,7 @@
     {
       "binding": "DB",
       "database_name": "multtae-ai-pilot",
-      "database_id": "00000000-0000-4000-8000-000000000000",
+      "database_id": "5273998c-bfae-4f28-87bd-c060f36c441a",
       "migrations_dir": "drizzle"
     }
   ],
