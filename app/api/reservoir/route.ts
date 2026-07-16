@@ -1044,7 +1044,7 @@ function forecastLabFor(
   }
 
   return {
-    version: "물때AI v0.4",
+    version: "물살핌 v0.4",
     status: "실험",
     baseline: "지속성 기준모형(미래 저수율 = 오늘 저수율)",
     releaseRule: "날씨 모형은 기준모형 5%·v0.3 2% 이상 개선해야 채택",
@@ -1113,7 +1113,7 @@ function payloadFor(
       verdict: diagnostics.verdict,
       requestedFrom,
       requestedTo,
-      standard: "물때AI v0.2 내부 진단 기준",
+      standard: "물살핌 v0.2 내부 진단 기준",
     },
     forecast,
     fetchedAt: new Date().toISOString(),
