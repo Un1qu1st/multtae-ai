@@ -630,7 +630,7 @@ function buildFarmAction(data: ReservoirData, profile: FarmProfile): FarmAction 
           tone: "watch",
           eyebrow: `${data.status.label} · 포장 건조`,
           title: "공급 안내와 관수 우선순위를 먼저 확인",
-          lead: `포장은 말라 있지만 ${data.reservoir.name}의 물 사정은 ‘${data.status.label}’입니다. 관할 급수 안내를 확인한 뒤 꼭 필요한 구역부터 판단하세요.`,
+          lead: `포장은 말라 있지만 ${data.reservoir.name}의 저수율 상태는 ‘${data.status.label}’입니다. 관할 급수 안내를 확인한 뒤 꼭 필요한 구역부터 판단하세요.`,
           steps: ["관할 KRC 지사·용수관리 안내와 공급 일정을 먼저 확인하세요.", cropCheck, stageCheck],
           confidence,
           confidenceNote,
@@ -1670,7 +1670,7 @@ function FarmActionCard({ data }: { data: ReservoirData }) {
         <div>
           <span className="section-kicker">물살핌 v0.10 · 농업인 하루판단판</span>
           <h2 id="farm-action-title">영농 조건 3가지를 더해, 오늘 확인할 순서를 정합니다</h2>
-          <p>KRC 물 사정과 3일 비 전망에 내 작물·생육단계·포장 수분을 더합니다. 정답처럼 물 양을 지시하지 않고 현장에서 먼저 살필 순서를 안내합니다.</p>
+          <p>KRC 농업용수 현황과 3일 비 전망에 내 작물·생육단계·포장 수분을 더합니다. 정답처럼 물 양을 지시하지 않고 현장에서 먼저 살필 순서를 안내합니다.</p>
         </div>
         <div className="device-save-note">
           <span aria-hidden="true">✓</span>
@@ -2046,7 +2046,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="물살핌 홈">
           <span className="brand-mark"><WaterMark /></span>
-          <span className="brand-name">물때<span>AI</span></span>
+          <span className="brand-name">물살핌</span>
           <span className="brand-tagline">농업인 하루판단판</span>
         </a>
         <div className="header-actions">
@@ -2066,7 +2066,7 @@ export default function Home() {
         <section className="hero-grid" aria-labelledby="hero-title">
           <div className="hero-copy-panel">
             <div className="eyebrow"><span className="eyebrow-dot" /> 2일 익명 현장검증 진행 중 · KRC 데이터로 준비하는 농업인의 하루</div>
-            <h1 id="hero-title">오늘 물 사정부터,<br /><span>내 농사 판단까지</span></h1>
+            <h1 id="hero-title">오늘 농업용수 현황부터,<br /><span>내 농사 판단까지</span></h1>
             <p className="hero-copy">
               전국 대표 저수지 5곳의 365일 기록과 3일 비 전망을 검증하고,<br className="desktop-break" />
               내 작물·생육단계·포장 수분을 더해 오늘 먼저 확인할 순서를 알려드립니다.
@@ -2074,7 +2074,7 @@ export default function Home() {
 
             <div className="decision-equation" aria-label="하루판단에 사용하는 정보">
               <div className="decision-inputs">
-                <span><b>01</b>KRC 물 사정</span>
+                <span><b>01</b>KRC 농업용수 현황</span>
                 <span><b>02</b>3일 비 전망</span>
                 <span><b>03</b>내 작물·포장</span>
               </div>
@@ -2121,7 +2121,7 @@ export default function Home() {
             <div className={`today-panel ${loading ? "is-loading" : ""}`}>
               <div className="today-heading">
                 <div>
-                  <span className="today-step-label">하루판단 근거 1 · KRC 물 사정</span>
+                  <span className="today-step-label">하루판단 근거 1 · KRC 농업용수 현황</span>
                   <span className="region-chip">{data.reservoir.region}</span>
                   <h2>{data.reservoir.name}</h2>
                   <p>{data.reservoir.county}</p>
@@ -2143,7 +2143,7 @@ export default function Home() {
                 </article>
 
                 <article className="action-card">
-                  <div className="action-title"><LeafMark /><span>물 사정에서 읽은 신호</span></div>
+                  <div className="action-title"><LeafMark /><span>농업용수 현황에서 읽은 신호</span></div>
                   <p>{data.status.action}</p>
                   <div className="trend-pill">
                     <span>{data.trend.label}</span>
