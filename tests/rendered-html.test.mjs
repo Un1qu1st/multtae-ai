@@ -30,6 +30,6 @@ test("renders the public pilot safely without search indexing", async () => {
     /^text\/html\b/i,
   );
   const html = await response.text();
-  assert.match(html, /물때AI/);
+  assert.match(html, /물살핌/);
   assert.match(html, noIndexMeta);
 });
