@@ -784,7 +784,7 @@ function ValidationReport({ summary }: { summary: FeedbackSummary }) {
       <div className="report-heading">
         <div>
           <span className="report-badge"><span aria-hidden="true">✓</span> 첫 3명 표본 고정</span>
-          <h3 id="validation-report-title">물때AI 농업인 1차 검증 고정판</h3>
+          <h3 id="validation-report-title">물살핌 농업인 1차 검증 고정판</h3>
           <p>{formatReportDate(report.period.lastRecordedAt)} 완료 · 후속 응답과 분리 · 익명 참여 · QA 기록 제외</p>
         </div>
         <button type="button" className="report-print-button" onClick={() => window.print()}>
@@ -880,7 +880,7 @@ function ValidationReport({ summary }: { summary: FeedbackSummary }) {
           <div><span style={{ width: `${secondProgress}%` }} /></div>
           <p>{remainingParticipants ? `목표까지 ${remainingParticipants}명 · 미검증 조건 우선 모집` : "10명 목표 달성 · 결과 비교와 규칙 보정 단계"}</p>
         </div>
-        <span className="report-version">물때AI v0.8 · 검증 고정판</span>
+        <span className="report-version">물살핌 v0.8 · 검증 고정판</span>
       </div>
     </section>
   );
@@ -1189,7 +1189,7 @@ function ActionJournal({
   async function keepReturnLink() {
     const returnUrl = `${window.location.origin}${window.location.pathname}#outcome-loop`;
     const shareData = {
-      title: "물때AI 2일 현장검증",
+      title: "물살핌 2일 현장검증",
       text: "같은 휴대폰으로 다시 열어 실제 비와 다음 포장 상태를 기록해주세요.",
       url: returnUrl,
     };
@@ -1273,7 +1273,7 @@ function ActionJournal({
     <section className="action-journal" id="outcome-loop" aria-labelledby="action-journal-title">
       <div className="journal-intro">
         <div>
-          <span className="section-kicker">물때AI v0.11 · 2일 익명 현장검증</span>
+          <span className="section-kicker">물살핌 v0.11 · 2일 익명 현장검증</span>
           <h3 id="action-journal-title">오늘 1분, 다음 확인 때 1분이면 참여 완료</h3>
           <p>오늘 행동카드를 저장하고 실제 포장을 다시 확인할 때 결과를 남겨주세요. 이름·전화번호·정확한 농장 위치는 받지 않습니다.</p>
         </div>
@@ -1509,7 +1509,7 @@ function FieldFeedback({
     <section className="field-feedback" aria-labelledby="field-feedback-title">
       <div className="feedback-intro">
         <div>
-          <span className="section-kicker">물때AI v0.8 · 농업인 검증·개선 루프</span>
+          <span className="section-kicker">물살핌 v0.8 · 농업인 검증·개선 루프</span>
           <h3 id="field-feedback-title">이 안내가 실제 현장과 맞았는지 알려주세요</h3>
           <p>한 번의 탭이 다음 행동카드를 더 정확하고 더 쉬운 말로 바꾸는 검증자료가 됩니다.</p>
         </div>
@@ -1668,7 +1668,7 @@ function FarmActionCard({ data }: { data: ReservoirData }) {
     <section className="farm-section" id="daily-decision" aria-labelledby="farm-action-title">
       <div className="farm-intro">
         <div>
-          <span className="section-kicker">물때AI v0.10 · 농업인 하루판단판</span>
+          <span className="section-kicker">물살핌 v0.10 · 농업인 하루판단판</span>
           <h2 id="farm-action-title">영농 조건 3가지를 더해, 오늘 확인할 순서를 정합니다</h2>
           <p>KRC 물 사정과 3일 비 전망에 내 작물·생육단계·포장 수분을 더합니다. 정답처럼 물 양을 지시하지 않고 현장에서 먼저 살필 순서를 안내합니다.</p>
         </div>
@@ -1820,7 +1820,7 @@ function ForecastLab({
     <section className="forecast-section" id="forecast-evidence" aria-labelledby="forecast-title">
       <div className="forecast-intro">
         <div>
-          <span className="section-kicker">물때AI v0.4 · 날씨 결합 실험실</span>
+          <span className="section-kicker">물살핌 v0.4 · 날씨 결합 실험실</span>
           <h2 id="forecast-title">비 예보를 넣었을 때, 정말 더 정확해졌는지 봅니다</h2>
           <p>
             과거의 각 날짜에 실제로 발표됐던 강수예보만 사용해 v0.3과 다시 겨뤘습니다.
@@ -2044,7 +2044,7 @@ export default function Home() {
   return (
     <main className="site-shell">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="물때AI 홈">
+        <a className="brand" href="#top" aria-label="물살핌 홈">
           <span className="brand-mark"><WaterMark /></span>
           <span className="brand-name">물때<span>AI</span></span>
           <span className="brand-tagline">농업인 하루판단판</span>
@@ -2189,7 +2189,7 @@ export default function Home() {
           <section className={`diagnostic-section ${loading ? "is-loading" : ""}`} id="data-evidence" aria-labelledby="diagnostic-title">
             <div className="diagnostic-intro">
               <div>
-                <span className="section-kicker">물때AI v0.2 · 데이터 건강검진</span>
+                <span className="section-kicker">물살핌 v0.2 · 데이터 건강검진</span>
                 <h2 id="diagnostic-title">AI 학습 전에, 365일 기록부터 확인했습니다</h2>
                 <p>
                   예측 결과를 꾸미기 전에 원자료가 얼마나 빠짐없이 이어지는지 먼저 보는 단계입니다.
@@ -2281,7 +2281,7 @@ export default function Home() {
                 <p><strong>이 결과는 예측 성능 점수가 아닙니다.</strong> AI 예측에 넣기 전 원자료의 연속성·최신성·이상 변화를 보는 건강검진입니다.</p>
               </div>
               <details>
-                <summary>물때AI 내부 판정 기준 보기</summary>
+                <summary>물살핌 내부 판정 기준 보기</summary>
                 <ul>
                   <li>365일 중 300일 이상, 결측 10% 이하, 최근 3일 이내 갱신이면 예측 실험 준비 가능</li>
                   <li>180일 이상, 결측 30% 이하, 최근 7일 이내 갱신이면 1·3일 단기예측부터 권장</li>
