@@ -225,7 +225,11 @@ function parseReadings(xml: string): RawReading[] {
 
 function getApiKey() {
   const raw = process.env.KRC_API_KEY ?? "";
-  const key = raw.trim();
+  const key = raw
+    .trim()
+    .replace(/^KRC_API_KEY\s*=\s*/i, "")
+    .replace(/^["']|["']$/g, "")
+    .trim();
   if (!key.includes("%")) return key;
   try {
     return decodeURIComponent(key);
