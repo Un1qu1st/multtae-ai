@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "물때AI | 농업인 하루판단판",
+  title: "물살핌 | 농업인 하루판단판",
   description:
     "KRC 저수지 데이터와 강수전망을 내 작물·생육단계·포장 상태에 연결해 오늘 먼저 확인할 행동을 알려드립니다.",
   robots: {
