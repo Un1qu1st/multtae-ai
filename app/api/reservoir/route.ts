@@ -789,10 +789,10 @@ function horizonForecast(
     water: Record<ForecastMethod, number>;
     weather: Record<WeatherForecastMethod, number>;
   }> = [];
-  const recentTestLimit = 190;
+  const recentTestLimit = 120;
   const firstOrigin = Math.max(80, series.length - recentTestLimit - horizon);
 
-  for (let origin = firstOrigin; origin + horizon < series.length; origin += 1) {
+  for (let origin = firstOrigin; origin + horizon < series.length; origin += 4) {
     if (dayDifference(series[origin].date, series[origin + horizon].date) !== horizon) continue;
     const history = series.slice(0, origin + 1);
     const predictions = candidatePredictions(history, horizon);
@@ -837,10 +837,10 @@ function horizonForecast(
   }
 
   const waterMethods: ForecastMethod[] = ["trend", "pattern", "ensemble"];
-  const desiredWaterSelection = Math.max(40, Math.floor(waterRecords.length * 0.35));
+  const desiredWaterSelection = Math.max(8, Math.floor(waterRecords.length * 0.35));
   const waterSelectionCount = Math.min(
     desiredWaterSelection,
-    Math.max(0, waterRecords.length - 80),
+    Math.max(0, waterRecords.length - 18),
   );
   const waterSelectionRecords = waterRecords.slice(0, waterSelectionCount);
   const waterValidationRecords = waterRecords.slice(waterSelectionCount);
@@ -861,10 +861,10 @@ function horizonForecast(
     : 0;
 
   const weatherMethods: WeatherForecastMethod[] = ["weatherPattern", "weatherEnsemble"];
-  const desiredWeatherSelection = Math.max(40, Math.floor(weatherRecords.length * 0.35));
+  const desiredWeatherSelection = Math.max(8, Math.floor(weatherRecords.length * 0.35));
   const weatherSelectionCount = Math.min(
     desiredWeatherSelection,
-    Math.max(0, weatherRecords.length - 80),
+    Math.max(0, weatherRecords.length - 18),
   );
   const weatherSelectionRecords = weatherRecords.slice(0, weatherSelectionCount);
   const weatherValidationRecords = weatherRecords.slice(weatherSelectionCount);
@@ -904,16 +904,16 @@ function horizonForecast(
   const weatherPrediction = nextWeatherPredictions[bestWeatherMethod];
   const waterPassed =
     qualityReady &&
-    waterSelectionRecords.length >= 40 &&
-    waterValidationRecords.length >= 80 &&
+    waterSelectionRecords.length >= 8 &&
+    waterValidationRecords.length >= 18 &&
     waterPrediction !== null &&
     waterImprovementPct >= 5;
   const weatherPassed =
     qualityReady &&
     weather.status === "connected" &&
     weather.historyCoverageRate >= 90 &&
-    weatherSelectionRecords.length >= 40 &&
-    weatherValidationRecords.length >= 80 &&
+    weatherSelectionRecords.length >= 8 &&
+    weatherValidationRecords.length >= 18 &&
     forecastRain !== null &&
     weatherPrediction !== null &&
     weatherImprovementPct >= 5 &&
@@ -946,10 +946,10 @@ function horizonForecast(
     reason = `날씨 연결은 재시도 중입니다. 검증을 통과한 v0.3 ${methodLabel(bestWaterMethod)} 모형을 유지합니다.`;
   } else if (waterPassed) {
     reason = `날씨 결합의 v0.3 대비 개선폭이 ${weatherGainPct.toFixed(1)}%로 채택 기준 2%에 미치지 못해 기존 모형을 유지합니다.`;
-  } else if (waterSelectionRecords.length < 40 || weatherSelectionRecords.length < 40) {
-    reason = "모형 선택용 과거 표본이 40회에 미치지 못했습니다.";
-  } else if (waterValidationRecords.length < 80 || weatherValidationRecords.length < 80) {
-    reason = "별도 검증 표본이 80회에 미치지 못했습니다.";
+  } else if (waterSelectionRecords.length < 8 || weatherSelectionRecords.length < 8) {
+    reason = "모형 선택용 간격 표본이 8회에 미치지 못했습니다.";
+  } else if (waterValidationRecords.length < 18 || weatherValidationRecords.length < 18) {
+    reason = "별도 검증 간격 표본이 18회에 미치지 못했습니다.";
   } else {
     reason = `기존 모형(${waterImprovementPct.toFixed(1)}%)과 날씨 결합(${weatherImprovementPct.toFixed(1)}%) 모두 공개 기준을 넘지 못했습니다.`;
   }
